@@ -30,7 +30,7 @@ pub fn input_generator(input: &str) -> Vec<Password> {
 pub fn part1(input: &[Password]) -> u32 {
     let mut res = 0;
     for p in input {
-        let count = p.password.matches(p.letter).collect::<Vec<_>>().len();
+        let count = p.password.chars().filter(|&c| c == p.letter).count();
         if p.start <= count && count <= p.end {
             res += 1;
         }
